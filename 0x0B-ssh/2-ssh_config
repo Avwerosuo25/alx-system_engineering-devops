@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Connecting to a server using rsa ssh without typing password
+
+Host 54.146.76.224
+    User ubuntu
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
