@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# This script securely transfers a file from a client to a server using scp.
+# Usage: transfer_file.sh [file_path] [server_ip] [username] [ssh_key_path]
+# If no file path is specified, the script exits with an error message.
+
+if [ $# -lt 4 ]; then
+  echo "Usage: transfer_file.sh [file_path] [server_ip] [username] [ssh_key_path]"
+  exit 1
+fi
+
+if [ ! -f "$1" ]; then
+  echo "Error: file not found"
+  exit 1
+fi
+
+scp -o StrictHostKeyChecking=no -i "$4" "$1" "$3@$2":/
+echo "File transferred successfully!"
